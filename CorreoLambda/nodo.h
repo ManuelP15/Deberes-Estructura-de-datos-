@@ -1,0 +1,68 @@
+#ifndef NODO_H
+#define NODO_H
+
+#include <string>
+using namespace std;
+
+class Nodo {
+private:
+    string cedula;
+    string nombre;
+    string apellido;
+    string correo;
+    Nodo* siguiente;
+    Nodo* anterior;
+
+public:
+    Nodo();
+    Nodo(string cedula, string nombre, string apellido);
+    Nodo(string cedula, string nombre, string apellido, string correo);
+    ~Nodo();
+
+    string getCedula();
+    void setCedula(string newCedula);
+    string getNombre();
+    void setNombre(string newNombre);
+    string getApellido();
+    void setApellido(string newApellido);
+    string getCorreo();
+    void setCorreo(string newCorreo);
+    Nodo* getSiguiente();
+    void setSiguiente(Nodo* newSiguiente);
+    Nodo* getAnterior();
+    void setAnterior(Nodo* newAnterior);
+    bool guardarEnArchivo(string ruta);
+    bool eliminarDeArchivo(string ruta);
+
+};
+
+class ListaDoble {
+private:
+    Nodo* cola;
+    Nodo* cabeza;
+
+public:
+    ListaDoble();
+    ~ListaDoble();
+
+    Nodo* getCola();
+    void setCola(Nodo* newCola);
+
+    Nodo* getCabeza();
+    void setCabeza(Nodo* newCabeza);
+
+    void imprimirReversa();
+
+    string generarCorreo(string nombre, string apellido);
+    bool existeCorreo(string correo);
+
+    void insertar(string cedula, string nombre, string apellido);
+    void imprimir();
+    Nodo* buscar(string cedula);
+    bool borrar(string cedula);
+    int buscarPorApellido(string apellido);
+    bool modificarRegistro(string cedulaActual, string nuevaCedula, string nuevoNombre, string nuevoApellido);
+    
+};
+
+#endif
